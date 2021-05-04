@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "edef6e85-3b83-4113-912c-0f429a0e2571",
+		"name": "alkemy_disney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/api/peliculas/search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "order",
+							"value": "fechaCreacion",
+							"type": "text"
+						},
+						{
+							"key": "desc_asc",
+							"value": "ASC",
+							"type": "text"
+						},
+						{
+							"key": "keywords",
+							"value": "Manda",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/peliculas/search",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"peliculas",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/peliculas/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "titulo",
+							"value": "La Bella y la Bestia",
+							"type": "text"
+						},
+						{
+							"key": "fechaCreacion",
+							"value": "2019-11-12T00:00:00.000Z",
+							"type": "text"
+						},
+						{
+							"key": "calificacion",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"value": "imagen-1620065876807.jpg",
+							"type": "text"
+						},
+						{
+							"key": "genero",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/peliculas/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"peliculas",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 
 const { Pelicula } = require('../../database/models');
+const db = require('../../database/models');
 
 const controller = {
 	all: async (req, res) => {
@@ -66,7 +67,7 @@ const controller = {
 	createPelicula: async (req, res, next) => {		
 		try {
 			let errors = validationResult(req);
-            
+
 			if (errors.isEmpty()){
 				let newPeliculaBody = {
 					...req.body, 
@@ -80,7 +81,23 @@ const controller = {
         } catch (error) {
             console.log(error);
         }
-	}
+	}, 
+    search: async (req, res, next) => {
+        try {
+            const peliculasSearch = await Pelicula.findAll({
+				where: {
+					titulo: {[db.Sequelize.Op.like] : '%' + req.body.keywords + '%'}
+				},
+				order: [
+					[req.body.order, req.body.desc_asc]
+				]
+			});
+			
+        	res.json(peliculasSearch);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
 
 module.exports = controller;

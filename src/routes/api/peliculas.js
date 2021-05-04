@@ -17,8 +17,11 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 router.get('/', apiPeliculasController.all);
+
 router.post('/create', apiPeliculasController.createPelicula);
+
 router.get('/:idPelicula', apiPeliculasController.detail);
 
+router.post('/search', apiPeliculasController.search);
 
 module.exports = router;
