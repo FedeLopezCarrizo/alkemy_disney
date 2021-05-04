@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head', { css:'login_style', js:'login' } )  %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+	    <%- include('../partials/header') %>
+        <!-- /header --> 
+            
+        <section class="section__login">
+
+            <article class="article__login"> 
+                <form action="/users/login" method="POST">
+                
+                    <p class="login__title">Ingresar</p>
+                    <a class="login__forgetpass" href="">¿Olvidaste tu contraseña?</a>
+                    
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
+
+                    <div class="div__login">
+                        <input class="input__email" type="email" name="email" placeholder="Tu dirección de E-mail" value="<%= typeof old == 'undefined' ? '' : old.email %>">
+                        <small></small>
+                    </div>
+                    <div class="div__login">
+                        <input class="input__password" type="password" name="password" placeholder="Contraseña">
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="recordame" id="recordame">
+                        <label for="recordame" class="form__label">Recordar contraseña</label>
+                    </div>
+                                
+                    <div class="button__div">
+                        <button class="button__login" type="submit" name="button-login">Ingresar</button>
+                    </div>
+
+                    <div class="login__unregistered">
+                        <span class="txt__signup">¿No tienes una cuenta?</span>
+                        <span class="line__signup"></span>
+                    </div>
+
+                    <div class="button__div">
+                        <ul class="ul__button">
+                            <li class="li__button"><a href="/users/register" class="enlace__button">Registrate</a></li> 
+                        </ul>                
+                    </div>
+                </form>
+            </article>
+        </section>
+    </div>
+</body>
+</html>

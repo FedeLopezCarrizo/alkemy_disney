@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'peliculaEdit_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- producto -->
+        <section class="section__peliculaEdit">
+
+            <article class="article__peliculaEdit"> 
+                <h2>Estás editando: <%= peliculaToEdit.titulo %> </h2>
+                <form action="/peliculas/edit/<%= peliculaToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="div__peliculaEdit">
+						<label for="titulo" class="form__label">Titulo de la pelicula:</label>
+						<input type="text" id="titulo" name="titulo" placeholder="Ej: Toy Story" class="form__input" value="<%= peliculaToEdit.titulo %>">
+					</div>
+                    <div class="div__peliculaEdit">
+                        <label for="fechaCreacion" class="form__label">Fecha Creación:</label>
+                        <input type="date" name="fechaCreacion" value="<%= moment(moment.utc(peliculaToEdit.fechaCreacion)).format('YYYY-MM-DD') %>">
+                    </div>
+					<div class="div__peliculaEdit">
+						<label for="calificacion" class="form__label">Calificacion:</label>
+						<input type="text" id="calificacion" name="calificacion" placeholder="Ej: 1 a 5" class="form__input" value="<%= peliculaToEdit.calificacion %>">
+					</div>
+                    <div class="div__peliculaEdit">
+						<label for="imagen" class="form__label">Imagen:</label>
+						<input type="file" name="imagen" class="form__input" accept="image/*">
+					</div>
+                    <div class="div__peliculaEdit">
+                        <label for="genero" class="form__label">Género:</label>
+                        <select name="genero">
+                            <% generos.forEach(genero => { %> 
+                                <% if (peliculaToEdit.GeneroId == genero.id) { %> 
+                                    <option value="<%= genero.id %>" selected><%= genero.nombre %> </option>
+                                <% } else { %> 
+                                    <option value="<%= genero.id %>"><%= genero.nombre %> </option>
+                                <% } %> 
+                            <% }) %>
+                        </select>
+                    </div>
+					<div class="div__button">
+						<button type="submit" class="buy__now__button">Guardar pelicula</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" name="button_reset" class="button__reset">Limpiar campos</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </div>
+</body>
+</html>

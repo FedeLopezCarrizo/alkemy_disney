@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'peliculaCreate_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- pelicula -->
+        <section class="section__peliculaCreate">
+            
+            <article class="article__peliculaCreate"> 
+                <h2>Cargá una pelicula</h2>
+                <form action="/peliculas/create" method="POST" enctype="multipart/form-data">
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <div class="form-control">
+						<label for="titulo" class="form__label">Titulo de la pelicula:</label>
+						<input type="text" id="titulo" name="titulo" placeholder="Ej: Toy Story" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.titulo %>">
+                        <small></small>
+					</div>
+					<div class="form-control">
+						<label for="fechaCreacion" class="form__label">Fecha Creacion:</label>
+                        <input type="date" id="fechaCreacion" name="fechaCreacion">
+					</div>
+                    <div class="form-control">
+                        <label for="calificacion" class="form__label">Calificación:</label>
+                        <select name="calificacion">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+						<label for="imagen" class="form__label">Imagen:</label>
+						<input type="file" name="imagen" class="form__input" accept="image/*">
+                    </div> 
+                    <div class="form-control">
+                        <label for="genero" class="form__label">Genero:</label>
+                        <select name="genero" class="input__nombre">
+                            <% generos.forEach(genero => { %> 
+                                <option value="<%= genero.id %>"><%= genero.nombre %> </option>
+                            <% }) %>
+                        </select>
+                        <small></small>
+                    </div>
+                    <div class="div__button">
+						<button type="submit" class="buy__now__button">Guardar pelicula</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" class="button__reset">Limpiar campos</button>
+                    </div>
+                </form>
+            </article>        
+        </section>
+    </div>
+</body>
+</html>

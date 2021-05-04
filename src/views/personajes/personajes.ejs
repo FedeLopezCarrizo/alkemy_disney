@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'personajes_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+
+        <!-- header -->
+	    <%- include('../partials/header') %>
+        <!-- /header -->    	    
+        
+        <article class="article__personajes__title">
+            <h2>Todos los personajes</h2>
+        </article>  
+          <!-- personajes -->
+        <section class="section__personajes">                   
+            <% personajes.forEach(personaje => { %>
+                <article class="article__personajes__detail">
+                    <a href="/personajes/<%= personaje.id %> ">
+                        <article class="personaje__box__image">
+                            <img src="/images/<%= personaje.imagen %> " class="image__personaje" alt="imagen del personaje">
+                        </article>
+                        <article class="personaje__box__data">
+                            <p><%= personaje.nombre %> </p>
+                        </article>
+                    </a>
+                </article>
+            <% }) %>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'personajeCreate_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- personaje -->
+        <section class="section__personajeCreate">
+            
+            <article class="article__personajeCreate"> 
+                <h2>Cargá un personaje</h2>
+                <form action="/personajes/create" method="POST" enctype="multipart/form-data">
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <div class="div__personajeCreate">
+						<label for="nombre" class="form__label">Nombre del personaje:</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Ej: Buzz Lightyear" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.nombre %>">
+					</div>
+					<div class="div__personajeCreate">
+						<label for="edad" class="form__label">Edad:</label>
+                        <input type="text" id="edad" name="edad" placeholder="Ej: 2" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.edad %>">
+					</div>
+					<div class="div__personajeCreate">
+						<label for="peso" class="form__label">Peso:</label>
+						<input type="text" id="peso" name="peso" placeholder="Ej: 10" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.peso %>">
+                    </div>
+					<div class="div__personajeCreate">
+						<label for="historia" class="form__label">Historia:</label>
+						<textarea name="historia" id="historia" class="form__input" cols="30" rows="5"><%= typeof old == 'undefined' ? '' : old.historia %></textarea>
+                    </div>
+                    <div class="div__personajeCreate">
+						<label for="imagen" class="form__label">Imagen:</label>
+						<input type="file" name="imagen" class="form__input" accept="image/*">
+                    </div> 
+                    <div class="div__personajeCreate">
+                        <label for="pelicula" class="form__label">Peliculas:</label>
+                        <select name="pelicula" multiple>
+                            <% peliculas.forEach(pelicula => { %> 
+                                <option value="<%= pelicula.id %>"><%= pelicula.titulo %> </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="div__button">
+						<button type="submit" class="buy__now__button">Guardar personaje</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" class="button__reset">Limpiar campos</button>
+                    </div>
+                </form>
+            </article>        
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'peliculas_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+
+        <!-- header -->
+	    <%- include('../partials/header') %>
+        <!-- /header -->    	    
+        
+        <article class="article__peliculas__title">
+            <h2>Todos las peliculas</h2>
+        </article>  
+          <!-- peliculas -->
+        <section class="section__peliculas">                   
+            <% peliculas.forEach(pelicula => { %>
+                <article class="article__peliculas__detail">
+                    <a href="/peliculas/<%= pelicula.id %> ">
+                        <article class="pelicula__box__image">
+                            <img src="/images/<%= pelicula.imagen %> " class="image__pelicula" alt="imagen de la pelicula">
+                        </article>
+                        <article class="pelicula__box__data">
+                            <p><%= pelicula.titulo %> </p>
+                        </article>
+                    </a>
+                </article>
+            <% }) %>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'personajeEdit_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- producto -->
+        <section class="section__personajeEdit">
+
+            <article class="article__personajeEdit"> 
+                <h2>Estás editando: <%= personajeToEdit.nombre %> </h2>
+                <form action="/personajes/edit/<%= personajeToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="div__personajeEdit">
+						<label for="nombre" class="form__label">Nombre del personaje:</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Ej: Buzz Lightyear" class="form__input" value="<%= personajeToEdit.nombre %>">
+					</div>
+					<div class="div__personajeEdit">
+						<label for="edad" class="form__label">Edad:</label>
+						<input type="text" id="edad" name="edad" placeholder="Ej: 2" class="form__input" value="<%= personajeToEdit.edad %>">
+					</div>
+					<div class="div__personajeEdit">
+						<label for="peso" class="form__label">Peso:</label>
+						<input type="text" id="peso" name="peso" placeholder="Ej: 10" class="form__input" value="<%= personajeToEdit.peso %>">
+					</div>
+					<div class="div__personajeEdit">
+						<label for="historia" class="form__label">Descripción:</label>
+						<textarea name="historia" id="historia" class="form__input" cols="30" rows="5"><%= personajeToEdit.historia %></textarea>
+                    </div>
+                    <div class="div__personajeEdit">
+						<label for="imagen" class="form__label">Imagen:</label>
+						<input type="file" name="imagen" class="form__input" accept="image/*">
+					</div>
+                    <div class="div__personajeEdit">
+                        <label for="pelicula" class="form__label">Peliculas:</label>
+                        <select name="pelicula" multiple>
+                            <% peliculas.forEach(pelicula => { %> 
+                                <% if (personajeToEdit.peliculas.some(peliculaPersonaje => peliculaPersonaje.id == pelicula.id)) { %> 
+                                    <option value="<%= pelicula.id %>" selected><%= pelicula.titulo %> </option>
+                                <% } else { %> 
+                                    <option value="<%= pelicula.id %>"><%= pelicula.titulo %> </option>
+                                <% } %> 
+                            <% }) %>
+                        </select>
+                    </div>
+					<div class="div__button">
+						<button type="submit" class="buy__now__button">Guardar personaje</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" name="button_reset" class="button__reset">Limpiar campos</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </div>
+</body>
+</html>

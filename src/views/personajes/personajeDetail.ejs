@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'personajeDetail_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- detalle del personaje -->
+        <section class="personaje__detail"> 
+
+            <article class="article__personaje__title">
+                <h2><%= personajeToView.nombre %></h2>
+            </article>
+
+            <section class="section__personaje__historia">         
+                <article class="article__personaje__img">
+                    <img src="/images/<%= personajeToView.imagen %>" class="img__personaje" alt="Imagen del personaje">
+                </article>
+
+                <article class="article__historia">
+                    
+                    <p>Edad: <%= personajeToView.edad %> </p>
+                    <p>Peso: <%= personajeToView.peso %> </p>
+                    <p>Historia: <%= personajeToView.historia %> </p>
+
+                    <div class="button__div">
+                        <ul class="ul__button">
+                            <li class="li__button"><a href="/personajes/edit/<%=  personajeToView.id %>" class="enlace__button">Modificar personaje</a></li> 
+                        </ul>                
+                    </div>
+
+                    <div class="button__div">
+                        <ul class="ul__button__delete">
+                            <li class="li__button"><a href="/personajes/delete/<%=  personajeToView.id %>" class="enlace__button__delete">Eliminar personaje</a></li> 
+                        </ul>                
+                    </div>
+                </article>
+            </section> 
+
+        </section>  
+    </div>
+</body>
+</html>

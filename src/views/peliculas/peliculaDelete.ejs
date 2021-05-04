@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'peliculaDelete_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- producto -->
+        <section class="section__peliculaDelete">
+
+            <article class="article__peliculaDelete"> 
+                <h2>La pelicula que va a eliminar es: <%= peliculaToDelete.titulo %> </h2>
+                <form action="/peliculas/delete/<%= peliculaToDelete.id %>?_method=DELETE" method="POST" enctype="multipart/form-data">
+                    <div class="div__peliculaDelete">
+                        <label class="form__label">Titulo de la pelicula:</label>
+                        <label class="form__label"><%= peliculaToDelete.titulo %></label>						
+					</div>
+                    
+                    <div class="div__button">
+                        <button type="submit" class="button__delete">Eliminar pelicula</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </div>
+</body>
+</html>

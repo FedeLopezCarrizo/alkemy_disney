@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'peliculaDetail_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- detalle de la pelicula -->
+        <section class="pelicula__detail"> 
+
+            <article class="article__pelicula__title">
+                <h2><%= peliculaToView.titulo %></h2>
+            </article>
+
+            <section class="section__pelicula">         
+                <article class="article__pelicula__img">
+                    <img src="/images/<%= peliculaToView.imagen %>" class="img__pelicula" alt="Imagen de la pelicula">
+                </article>
+
+                <article class="article__pelicula">
+                    
+                    <p>Calificacion: <%= peliculaToView.calificacion %> </p>
+                    <p>Fecha Creacion: <%= moment(moment.utc(peliculaToView.fechaCreacion)).format('DD/MM/YYYY') %></p>
+
+                    <div class="button__div">
+                        <ul class="ul__button">
+                            <li class="li__button"><a href="/peliculas/edit/<%=  peliculaToView.id %>" class="enlace__button">Modificar pelicula</a></li> 
+                        </ul>                
+                    </div>
+
+                    <div class="button__div">
+                        <ul class="ul__button__delete">
+                            <li class="li__button"><a href="/peliculas/delete/<%=  peliculaToView.id %>" class="enlace__button__delete">Eliminar pelicula</a></li> 
+                        </ul>                
+                    </div>
+                </article>
+            </section> 
+
+        </section>  
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<header class="header__main">            
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <article class="header__loginregister"> 
+            <a href="javascript:void(0);" onclick="myFunction()">
+                <button class="btn-toggle-navbar">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </a>
+            
+            <nav id="myLinks" class="main-navbar">
+                <ul class="left-navbar">
+                    <li><a href="/personajes" class="topnav__links">Personajes</a></li>
+                    <li><a href="/peliculas" class="topnav__links">Peliculas</a></li>                 
+                </ul>       
+            </nav>
+            
+        </article> 
+    </div>
+
+   <!-- busqueda por personaje -->
+   <article style="border: 1px solid black;"> 
+       Buscar por personaje
+        <form action="/personajes/search" method="POST" class="search__form">
+            <select name="order">
+                <option value="nombre">Nombre</option>
+                <option value="edad">Edad</option>
+                <option value="peso">Peso</option>
+            </select>
+            <select name="desc_asc">
+                <option value="ASC">Ascendente</option>
+                <option value="DESC">Descendente</option>
+            </select>
+            <input type="text" name="keywords" placeholder="Buscá un personaje..." class="input__search">
+            <button type="submit" class="search__form__button"><i class="fas fa-search"></i></button>
+        </form>
+    </article>
+
+    <!-- busqueda por pelicula -->
+    <article style="border: 1px solid black;"> 
+        Buscar por pelicula
+        <form action="/peliculas/search" method="POST" class="search__form">
+            <select name="order">
+                <option value="titulo">Titulo</option>
+                <option value="fechaCreacion">Fecha Creacion</option>
+                <option value="generoId">Genero</option>
+            </select>
+            <select name="desc_asc">
+                <option value="ASC">Ascendente</option>
+                <option value="DESC">Descendente</option>
+            </select>
+            <input type="text" name="keywords" placeholder="Buscá una película..." class="input__search">
+            <button type="submit" class="search__form__button"><i class="fas fa-search"></i></button>
+        </form>
+    </article>
+</header>
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+</script>

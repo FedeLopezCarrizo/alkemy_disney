@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head', { css:'register_style', js:'register' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+	    <%- include('../partials/header') %>
+        <!-- /header --> 
+
+        <!-- user -->
+        <section class="section__register">
+
+            <article class="article__userCreate">                 
+                <h2> Completa tus datos.</h2>
+
+                <form action="/users/register" method="POST">
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="email" id="email" name="email" placeholder="Tu dirección de E-mail" value="<%= typeof old == 'undefined' ? '' : old.email %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="password" name="password" placeholder="Contraseña">
+                        <small></small>
+                    </div>
+ 
+                    <div class="div__button">
+						<button type="submit" class="button__submit">Enviar Formulario</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" class="button__reset">Limpiar campos</button>
+                    </div>                    
+                </form>
+                
+            </article>    
+        </section>
+    </div>
+</body>
+</html>
